@@ -8,6 +8,8 @@ import {
   ListItemText,
   makeStyles,
   Typography,
+  AppBar,
+  Toolbar,
 } from "@material-ui/core";
 import Tab from "@material-ui/core/Tab";
 import { useHistory } from "react-router-dom";
@@ -15,6 +17,7 @@ import Tabs from "@material-ui/core/Tabs";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import Fab from "@material-ui/core/Fab";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ScrollTop from "../../components/backTop/index";
 
 import { Player, ControlBar } from "video-react";
@@ -29,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiTab-textColorSecondary": {
       color: "#a60000",
     },
+  },
+  appBar: {
+    background: "#160050",
   },
   centred: {
     display: "flex",
@@ -103,6 +109,16 @@ export default function CoursePageViewWithVideo(props) {
 
   return (
     <>
+      <AppBar position="static" className={classes.appBar}>
+        <Toolbar variant="dense">
+          <IconButton edge="start" className={classes.backButton} color="inherit" aria-label="menu">
+            <ArrowBackIcon onClick={() => history.goBack()} />
+          </IconButton>
+          <Typography variant="h6" color="inherit" className={classes.title}>
+            Back
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <div id="back-to-top-anchor"></div>
       <div>
         <Player
